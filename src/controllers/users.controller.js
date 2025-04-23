@@ -43,10 +43,10 @@ exports.singInUser = async (req, res) => {
 }
 
 exports.getUser = async (req, res) => {
-	const { id } = req.params;
+	const { id:user_id } = req.user
 
 	try {
-		const user = await fetchUserById(id);
+		const user = await fetchUserById(user_id);
 
 		if (!user) {
 			return res.status(404).json({ error: "User not found" });

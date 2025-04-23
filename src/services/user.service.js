@@ -2,10 +2,10 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // 🧩 Reusable function
-const fetchUserById = async (id) => {
+const fetchUserById = async (user_id) => {
 	return await prisma.user.findUnique({
 		where: {
-			id: parseInt(id),
+			id: parseInt(user_id),
 		},
 	});
 };
