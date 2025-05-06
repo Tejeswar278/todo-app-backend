@@ -10,7 +10,7 @@ exports.getTodos = async (req, res) => {
 
 exports.createTodo = async (req, res) => {
 	const { id: user_id } = req.user;
-	const { todo, description } = req.body;
+	const { todo, description, start_datetime, end_datetime, } = req.body;
 
 	try {
 		const user = await fetchUserById(user_id);
@@ -20,7 +20,7 @@ exports.createTodo = async (req, res) => {
 		}
 
 		const newTodo = await prisma.todo.create({
-			data: { user_id, todo, description },
+			data: { user_id, todo, description, start_datetime, end_datetime },
 		});
 
 		res.status(201).json(newTodo);
